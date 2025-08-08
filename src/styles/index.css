@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+@import "tailwindcss";
+
+body {
+  font-family: 'Fira Code', monospace;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out;
+}
+.pointer-circle {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  transition: left 0.12s ease, top 0.12s ease;
+  z-index: 9999;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #9a79ff;
+  border-radius: 10px;
+}
+
+.stars, .stars2, .stars3 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent url('https://assets.codepen.io/13471/stars.png') repeat top center;
+  z-index: 0;
+  animation: moveStars 200s linear infinite;
+}
+
+.stars2 {
+  background: transparent url('https://assets.codepen.io/13471/stars2.png') repeat top center;
+  animation: moveStars 400s linear infinite;
+}
+
+.stars3 {
+  background: transparent url('https://assets.codepen.io/13471/stars3.png') repeat top center;
+  animation: moveStars 600s linear infinite;
+}
+
+@keyframes moveStars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10000px); }
+}
+
+.glow-ring {
+  box-shadow: 0 0 15px #ff5f9e, 0 0 30px #9a79ff;
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px #ff5f9e, 0 0 30px #9a79ff;
+  }
+  50% {
+    box-shadow: 0 0 25px #ff5f9e, 0 0 40px #9a79ff;
+  }
+}
+
+/* Optional slow spin (add only if you want spin) */
+.animate-spin-slow {
+  animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
