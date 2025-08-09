@@ -15,7 +15,6 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen w-full px-6 py-12 text-white flex flex-col-reverse lg:flex-row items-center justify-center gap-10 bg-black overflow-hidden"
     >
-      {/* PARTICLES BACKGROUND */}
       <Particles
         id="tsparticles"
         init={particlesInit}
@@ -51,7 +50,6 @@ export default function Hero() {
         className="absolute top-0 left-0 w-full h-full z-0"
       />
 
-      {/* MAIN CONTENT */}
       <div className="z-10 flex flex-col items-center lg:items-start text-center lg:text-left w-full lg:w-1/2 gap-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -82,8 +80,11 @@ export default function Hero() {
 
         <div className="flex gap-4 mt-4">
           <a
-            href="#projects"
-            className="bg-[#9a79ff] hover:bg-[#ff5f9e] px-4 py-2 rounded-2xl shadow-lg transition"
+            onClick={() => {
+              const section = document.getElementById("projects");
+              section?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="cursor-pointer bg-[#9a79ff] hover:bg-[#ff5f9e] px-4 py-2 rounded-2xl shadow-lg transition"
           >
             View Work
           </a>
