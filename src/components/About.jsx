@@ -5,7 +5,7 @@ export default function About() {
     <section
       id="about"
       className="w-full bg-black text-white py-20"
-      style={{ marginLeft: "-1rem", marginRight: "-1rem" }} // to counteract parent's horizontal padding if needed
+      style={{ marginLeft: "-1rem", marginRight: "-1rem" }} // counter parent's horizontal padding if needed
     >
       <div className="max-w-[1400px] mx-auto px-6 sm:px-12">
         <motion.h2
@@ -13,7 +13,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-4xl sm:text-5xl font-bold mb-12 text-center"
+          className="text-3xl sm:text-4xl font-bold mb-12 text-center"
         >
           About <span className="text-[#ff5f9e]">Me</span>
         </motion.h2>

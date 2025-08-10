@@ -43,7 +43,7 @@ export default function Projects() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-4xl sm:text-5xl font-bold mb-12 text-center"
+        className="text-3xl sm:text-4xl font-bold mb-12 text-center"
       >
         My <span className="text-[#ff5f9e]">Projects</span>
       </motion.h2>
@@ -91,4 +91,3 @@ export default function Projects() {
     </section>
   );
 }
-

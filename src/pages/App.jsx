@@ -8,7 +8,8 @@ import SkillClusters from '../components/Skills';
 import ExperienceTimeline from '../components/Timeline';
 import DevToArticles from '../components/Articles';
 import CodeBreaker from '../components/Game';
-
+import SnakeGame from '../components/Typingtest';
+import ContactMe from '../components/ContactMe';
 function App() {
   return (
     <div className="min-h-screen bg-[#1e1e2f] text-[#fef9ff] flex flex-col items-center justify-center p-4">
@@ -16,11 +17,14 @@ function App() {
       <Hero />
       <About />
       <Projects />
-      <CodeBreaker />
+     
       <SkillClusters />
       <ExperienceTimeline />
       <DevToArticles />
       <Certifications />
+       <CodeBreaker />
+      <SnakeGame />
+      <ContactMe />
      
     </div>
   );

@@ -34,7 +34,7 @@ export default function CodeBreaker() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="max-w-4xl w-full p-10 bg-black rounded-3xl text-white shadow-lg"
+        className="max-w-4xl w-full px-6 sm:px-10 py-8 bg-black rounded-3xl text-white shadow-lg"
       >
         <h2 className="text-3xl font-bold mb-6 text-center text-[#ff5f9e]">
           Code Breaker Puzzle
@@ -44,25 +44,25 @@ export default function CodeBreaker() {
           {puzzle.sentence.replace("___", "______")}
         </p>
 
-        <form onSubmit={handleSubmit} className="flex gap-4 mb-6">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 mb-6">
           <input
             type="text"
             value={guess}
             onChange={(e) => setGuess(e.target.value)}
             placeholder="Type your guess..."
-            className="flex-grow p-4 rounded-lg bg-white/10 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-[#ff5f9e]"
+            className="w-full sm:flex-grow p-4 rounded-lg bg-white/10 border border-white/30 text-white focus:outline-none focus:ring-2 focus:ring-[#ff5f9e] text-base sm:text-lg"
             autoComplete="off"
           />
           <button
             type="submit"
-            className="px-8 py-4 bg-[#ff5f9e] rounded-lg font-semibold hover:bg-[#e14f8f] transition"
+            className="w-full sm:w-auto px-8 py-4 bg-[#ff5f9e] rounded-lg font-semibold hover:bg-[#e14f8f] transition text-base sm:text-lg"
           >
             Guess
           </button>
         </form>
 
         {feedback === "wrong" && (
-          <p className="text-red-500 mb-4 italic text-center">
+          <p className="text-red-500 mb-4 italic text-center text-sm sm:text-base">
             Nope, try again! Hint: It's a JS declaration keyword.
           </p>
         )}
@@ -71,7 +71,7 @@ export default function CodeBreaker() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="bg-[#ff5f9e]/20 rounded-lg p-6 text-center"
+            className="bg-[#ff5f9e]/20 rounded-lg p-6 text-center text-base sm:text-lg"
           >
             <p className="mb-4">{puzzle.secretMessage}</p>
             <a
