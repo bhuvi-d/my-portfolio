@@ -6,25 +6,29 @@ export default function Projects() {
       title: "Bhuvi's Portfolio",
       description:
         "The very site you're exploring — built with React, Framer Motion, and glassy neon aesthetics to showcase my work.",
-      link: "#home", // link
+      badges: ["React", "Framer Motion", "Tailwind CSS", "JavaScript"],
+      link: "#home",
     },
     {
       title: "MQTT Dashboard",
       description:
         "A dashboard implemented using Wokwi and Node-RED for real-time IoT device monitoring and data visualization.",
-      link: "#", //  link
+      badges: ["Node-RED", "Wokwi", "MQTT", "JavaScript"],
+      link: "#",
     },
     {
       title: "Hostalague",
       description:
         "A MERN stack-based tracker for hostel food logging with date filters, helping streamline meal records.",
-      link: "#", 
+      badges: ["MongoDB", "Express", "React", "Node.js"],
+      link: "#",
     },
     {
       title: "Mandala Therapy",
       description:
         "A mindful frontend app for digital therapy through art and affirmations, designed for mental wellness.",
-      link: "#", 
+      badges: ["React", "CSS", "Canvas API"],
+      link: "#",
     },
   ];
 
@@ -60,6 +64,19 @@ export default function Projects() {
           >
             <h3 className="text-2xl font-semibold mb-3">{project.title}</h3>
             <p className="text-white/80 mb-4">{project.description}</p>
+
+            {/* Tech Badges */}
+            <div className="flex flex-wrap gap-2 mb-4">
+              {project.badges.map((badge, i) => (
+                <span
+                  key={i}
+                  className="bg-[#9a79ff]/30 text-[#9a79ff] text-sm font-medium px-3 py-1 rounded-full select-none"
+                >
+                  {badge}
+                </span>
+              ))}
+            </div>
+
             <a
               href={project.link}
               target="_blank"
@@ -74,3 +91,4 @@ export default function Projects() {
     </section>
   );
 }
+
