@@ -67,6 +67,7 @@ export default function Hero() {
             src={myPic}
             alt="Bhuvi"
             className="w-full h-full object-cover rounded-full"
+             
           />
         </motion.div>
 
