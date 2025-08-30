@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 
-const BOARD_SIZE = 20; // 20x20 grid
+const BOARD_SIZE = 20;
 const INITIAL_SNAKE = [
   { x: 10, y: 10 },
   { x: 9, y: 10 },
   { x: 8, y: 10 },
 ];
 const INITIAL_DIRECTION = { x: 1, y: 0 };
-const SPEED = 150; // ms between moves
+const SPEED = 150;
 
 function getRandomFoodPosition(snake) {
   while (true) {
@@ -28,7 +28,7 @@ export default function SnakeGame() {
   const directionRef = useRef(direction);
   directionRef.current = direction;
 
-  // Handle keyboard input for direction
+  // Keyboard input
   useEffect(() => {
     function handleKey(e) {
       if (gameOver) return;
@@ -48,7 +48,6 @@ export default function SnakeGame() {
           if (x !== -1) setDirection({ x: 1, y: 0 });
           break;
         case " ":
-          // Space toggles pause/start
           setIsRunning((r) => !r);
           break;
       }
@@ -69,7 +68,6 @@ export default function SnakeGame() {
           y: (head.y + directionRef.current.y + BOARD_SIZE) % BOARD_SIZE,
         };
 
-        // Check collision with self
         if (prev.some((seg) => seg.x === newHead.x && seg.y === newHead.y)) {
           setGameOver(true);
           setIsRunning(false);
@@ -100,18 +98,28 @@ export default function SnakeGame() {
     setIsRunning(true);
   }
 
+  // Mobile control buttons
+  function handleDirection(d) {
+    const { x, y } = directionRef.current;
+    if (d === "up" && y !== 1) setDirection({ x: 0, y: -1 });
+    if (d === "down" && y !== -1) setDirection({ x: 0, y: 1 });
+    if (d === "left" && x !== 1) setDirection({ x: -1, y: 0 });
+    if (d === "right" && x !== -1) setDirection({ x: 1, y: 0 });
+  }
+
   return (
-    <section id="snake-game" className="w-full bg-black py-20">
-      <div className="max-w-md mx-auto p-6 rounded-3xl shadow-lg text-white select-none">
-        <h2 className="text-3xl font-bold mb-4 text-[#ff5f9e] text-center">
+    <section id="snake-game" className="w-full bg-black py-10">
+      <div className="max-w-md mx-auto p-4 rounded-3xl shadow-lg text-white select-none">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-[#ff5f9e] text-center">
           Snake Game
         </h2>
 
+        {/* Responsive Grid */}
         <div
           className="relative bg-gray-900 rounded-lg border border-[#ff5f9e] mx-auto"
           style={{
-            width: 400,
-            height: 400,
+            width: "min(90vw, 400px)",
+            height: "min(90vw, 400px)",
             display: "grid",
             gridTemplateColumns: `repeat(${BOARD_SIZE}, 1fr)`,
             gridTemplateRows: `repeat(${BOARD_SIZE}, 1fr)`,
@@ -129,7 +137,7 @@ export default function SnakeGame() {
             return (
               <div
                 key={i}
-                className={`w-full h-full rounded-sm transition-colors ${
+                className={`w-full h-full rounded-sm ${
                   isHead
                     ? "bg-[#ff5f9e]"
                     : isSnake
@@ -143,6 +151,7 @@ export default function SnakeGame() {
           })}
         </div>
 
+        {/* Score + Control */}
         <div className="mt-4 flex justify-between items-center px-4">
           <p className="text-lg font-semibold">Score: {score}</p>
           {gameOver ? (
@@ -162,8 +171,38 @@ export default function SnakeGame() {
           )}
         </div>
 
-        <p className="mt-3 text-center text-sm text-white/70">
-          Use arrow keys to move. Space to start/pause.
+        {/* Mobile Controls */}
+        <div className="mt-6 flex flex-col items-center gap-3">
+          <button
+            className="w-16 h-16 rounded-full bg-[#ff5f9e] active:scale-95"
+            onClick={() => handleDirection("up")}
+          >
+            ↑
+          </button>
+          <div className="flex gap-6">
+            <button
+              className="w-16 h-16 rounded-full bg-[#9a79ff] active:scale-95"
+              onClick={() => handleDirection("left")}
+            >
+              ←
+            </button>
+            <button
+              className="w-16 h-16 rounded-full bg-[#9a79ff] active:scale-95"
+              onClick={() => handleDirection("right")}
+            >
+              →
+            </button>
+          </div>
+          <button
+            className="w-16 h-16 rounded-full bg-[#ff5f9e] active:scale-95"
+            onClick={() => handleDirection("down")}
+          >
+            ↓
+          </button>
+        </div>
+
+        <p className="mt-4 text-center text-sm text-white/70">
+          Use arrows (keyboard) or tap buttons (mobile) to move.
         </p>
       </div>
     </section>
