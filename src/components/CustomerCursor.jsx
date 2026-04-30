@@ -1,41 +1,38 @@
-
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
+  const springConfig = { damping: 25, stiffness: 250, mass: 0.5 };
+  const cursorXSpring = useSpring(0, springConfig);
+  const cursorYSpring = useSpring(0, springConfig);
+
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePos({ x: e.clientX, y: e.clientY });
+      cursorXSpring.set(e.clientX);
+      cursorYSpring.set(e.clientY);
     };
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  }, [cursorXSpring, cursorYSpring]);
 
   return (
     <>
       <motion.div
-        animate={{ x: mousePos.x - 10, y: mousePos.y - 10 }}
-        transition={{ type: "spring", stiffness: 80, damping: 15 }}
-        className="pointer-events-none fixed top-0 left-0 z-[9999] w-5 h-5 rounded-full"
-        style={{
-          background: "linear-gradient(45deg, #ff5f9e, #9a79ff, #00f7ff)",
-          backgroundSize: "400% 400%",
-          animation: "colorShift 6s ease infinite",
-          boxShadow: "0 0 15px rgba(255, 95, 158, 0.8)",
-        }}
+        animate={{ x: mousePos.x - 4, y: mousePos.y - 4 }}
+        transition={{ type: "tween", ease: "linear", duration: 0 }}
+        className="pointer-events-none fixed top-0 left-0 z-[10000] w-2 h-2 bg-white rounded-full mix-blend-difference"
       />
-
-      <style>
-        {`
-          @keyframes colorShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-          }
-        `}
-      </style>
+      <motion.div
+        style={{ x: cursorXSpring, y: cursorYSpring, translateX: "-50%", translateY: "-50%" }}
+        className="pointer-events-none fixed top-0 left-0 z-[9999] w-10 h-10 rounded-full border border-[#ff5f9e]/50"
+        animate={{
+          boxShadow: ["0 0 10px #ff5f9e", "0 0 20px #00f7ff", "0 0 10px #ff5f9e"],
+        }}
+        transition={{ duration: 3, repeat: Infinity }}
+      />
     </>
   );
 }

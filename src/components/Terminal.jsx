@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
 const commands = {
-  about: "Hi, I'm Bhuvi — a developer who blends creativityand logic. I craft code, design, and dreams!",
+  about: "Hi, I'm Bhuvaneshwari — a developer who blends creativity and logic. I craft code, design, and dreams!",
   skills: "React, Node.js, Express, MongoDB, Python, C, Canva, Writing",
-  contact: "Email: bhuvi@example.com | GitHub: github.com/bhuvi",
+  contact: "Email: bhuvid2005@gmail.com | Phone: +91-9611770970 | GitHub: github.com/bhuvi-d | LinkedIn: linkedin.com/in/d-bhuvi",
   help: "Try typing: about, skills, contact, dreamer, tea",
   dreamer: "Dream big. Code bigger. ✨",
   tea: "☕ Brewing ideas... one sip at a time!",
@@ -13,7 +13,7 @@ export default function Terminal() {
   const [input, setInput] = useState("");
   const [history, setHistory] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
-  const endRef = useRef(null);
+  const containerRef = useRef(null);
 
   const handleCommand = async (e) => {
     if (e.key === "Enter" && !isTyping) {
@@ -38,13 +38,15 @@ export default function Terminal() {
   };
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
   }, [history, isTyping]);
 
   return (
     <div className="bg-[#1e1e2f] text-[#fef9ff] font-mono p-4 rounded-2xl w-full max-w-2xl mx-auto shadow-2xl mt-10 transition-all duration-500">
       <div className="text-pink-400 mb-2 text-sm">~/portfolio-terminal</div>
-      <div className="space-y-2 h-64 overflow-y-auto pr-2 scroll-smooth custom-scrollbar">
+      <div className="space-y-2 h-64 overflow-y-auto pr-2 scroll-smooth custom-scrollbar" ref={containerRef}>
         {history.map((item, idx) => (
           <div key={idx}>
             <div className="text-purple-400">❯ {item.input}</div>
@@ -56,7 +58,6 @@ export default function Terminal() {
             </div>
           </div>
         ))}
-        <div ref={endRef} />
       </div>
       <div className="flex mt-4">
         <span className="text-purple-400 mr-2">❯</span>

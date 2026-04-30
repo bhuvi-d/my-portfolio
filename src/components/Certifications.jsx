@@ -1,24 +1,21 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import dataScienceImg from "../assets/data-science.png";
+import machineLearningImg from "../assets/machine-learning.png";
 
 export default function Certifications() {
   const certificates = [
     {
-      title: "React Developer Certification",
-      img: "https://media.geeksforgeeks.org/wp-content/uploads/20200426214212/template12.png",
-      link: "#",
+      title: "Data Science Foundations (Great Learning)",
+      img: dataScienceImg, 
+      link: "https://www.mygreatlearning.com/certificate/JUASYNXD",
     },
     {
-      title: "Node.js Mastery",
-      img: "https://via.placeholder.com/1200x800.png?text=Node.js+Certification",
+      title: "Machine Learning for Beginners (Simplilearn)",
+      img: machineLearningImg, 
       link: "#",
-    },
-    {
-      title: "UI/UX Design",
-      img: "https://via.placeholder.com/1200x800.png?text=UI+UX+Certification",
-      link: "#",
-    },
+    }
   ];
 
   const [current, setCurrent] = useState(0);

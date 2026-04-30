@@ -6,6 +6,7 @@ import Certifications from "../components/Certifications";
 import About from '../components/About';
 import SkillClusters from '../components/Skills';
 import ExperienceTimeline from '../components/Timeline';
+import Hackathons from '../components/Hackathons';
 import DevToArticles from '../components/Articles';
 import CodeBreaker from '../components/Game';
 import SnakeGame from '../components/Typingtest';
@@ -20,6 +21,7 @@ function App() {
      
       <SkillClusters />
       <ExperienceTimeline />
+      <Hackathons />
       <DevToArticles />
       <Certifications />
        <CodeBreaker />

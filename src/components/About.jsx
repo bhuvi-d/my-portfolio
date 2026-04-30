@@ -21,25 +21,38 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-10 shadow-lg shadow-[#ff5f9e]/40 w-full"
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-100px" }}
+          animate={{ y: [0, -5, 0] }}
+          className="group relative bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl p-10 shadow-xl shadow-[#ff5f9e]/5 w-full transition-all duration-500 hover:border-[#ff5f9e]/50 hover:shadow-[0_0_40px_rgba(255,95,158,0.2)] overflow-hidden"
+          style={{ animation: "float 6s ease-in-out infinite" }}
         >
-          <p className="text-lg leading-relaxed text-white/90 mb-6">
-            Hello! I’m Bhuvi — a passionate developer, designer, and all-around dreamer who loves turning ideas into vibrant, interactive web experiences.
-          </p>
+          {/* Animated Glow Border/Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#ff5f9e]/10 to-[#9a79ff]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-          <p className="text-lg leading-relaxed text-white/80 mb-6">
-            I specialize in React, JavaScript, and UI/UX design. My approach blends clean code with eye-catching visuals, crafting projects that not only function flawlessly but also captivate and inspire.
-          </p>
+          <motion.p initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} viewport={{ once: true }} className="text-lg leading-relaxed text-white/90 mb-6 relative z-10">
+            Hey, I’m Bhuvaneshwari — a builder at heart who loves turning ideas into things people can actually use.
+          </motion.p>
 
-          <p className="text-lg leading-relaxed text-white/80 mb-6">
-            Beyond coding, I’m inspired by art, synthwave music, and the endless possibilities of technology. Always learning, always creating.
-          </p>
+          <motion.p initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} viewport={{ once: true }} className="text-lg leading-relaxed text-white/80 mb-6 relative z-10">
+            I work across React, full-stack systems, and a bit of AI/ML — but more than the tech, I enjoy figuring out how things connect. Whether it’s an IoT dashboard streaming real-time data or an AI model making sense of messy inputs, I like building systems that feel both smart and intuitive.
+          </motion.p>
 
-          <blockquote className="border-l-4 border-[#ff5f9e] pl-6 italic text-[#ff5f9e]/90">
+          <motion.p initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} viewport={{ once: true }} className="text-lg leading-relaxed text-white/80 mb-6 relative z-10">
+            Lately, I’ve been exploring the intersection of web, AI, and automation — creating projects that go beyond just “working” and actually solve something meaningful.
+          </motion.p>
+          
+          <motion.p initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} viewport={{ once: true }} className="text-lg leading-relaxed text-white/80 mb-6 relative z-10">
+            Outside of code, you’ll probably find me diving into new tech rabbit holes, experimenting with ideas, or chasing that one “what if we try this?” moment.
+          </motion.p>
+
+          <motion.p initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} viewport={{ once: true }} className="text-lg leading-relaxed text-white/80 mb-6 relative z-10">
+            Still learning. Still building. Always curious.
+          </motion.p>
+
+          <motion.blockquote initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ delay: 0.7 }} viewport={{ once: true }} className="border-l-4 border-[#ff5f9e] pl-6 italic text-[#ff5f9e]/90 font-medium relative z-10">
             “Code is like poetry — every line tells a story.”
-          </blockquote>
+          </motion.blockquote>
         </motion.div>
       </div>
     </section>
